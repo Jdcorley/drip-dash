@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <% include ./partials/headdash.ejs %>
+    </head>
+    <body>
+        <% include ./partials/navdash.ejs %>
+        <div class="container-fluid">
+            <% include ./partials/messages.ejs %>
+            <div class="row">
+                <div class="col-md-2 d-none d-md-block bg-light sidebar">
+                    <div class="sidebar-sticky">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">Overview</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Properties</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Devices</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Settings</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+
+                </main>
+            </div>
+        </div>
+
+        <% include ./partials/baseScripts.ejs %>
+    </body>
+</html>
