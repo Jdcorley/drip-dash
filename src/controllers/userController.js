@@ -6,6 +6,9 @@ module.exports = {
     signUp(req, res, next) {
         res.render("users/signup");
     },
+    signInForm(req, res, next) {
+        res.render("users/signin");
+    },
     create(req, res, next){
         let newUser = {
             email: req.body.email,
@@ -18,17 +21,34 @@ module.exports = {
                 res.redirect("/users/signup");
             } else {
                 passport.authenticate("local")(req, res, () => {
-                    req.flash("notice", "You've successfully signed in!")
-                    res.redirect("/dashboard");
-                })
-                particle.createUser(user.email, (err, response) => {
-                    if(response.error){
-                        console.log(response.error)
-                    } else {
-                        console.log(response);
-                    }
+                    particle.createUser(user.email, (err, response) => {
+                        req.session.particle_access_token = response.access_token;
+                        req.session.particle_refresh_token = response.refresh_token;
+                        req.flash("notice", "You've successfully signed in!")
+                        res.redirect("/dashboard");
+                    })
                 })
             }
         })
+    },
+    signIn(req, res, next) {
+        passport.authenticate("local")(req, res, () => {
+            if(!req.user) {
+                req.flash("notice", "Sign in failed. Please try again.")
+                res.redirect("/users/signin");
+            } else {
+                particle.getAccessToken(req.user.email, (err, response) => {
+                    req.session.particle_access_token = response.access_token;
+                    req.session.particle_refresh_token = response.refresh_token;
+                    req.flash("notice", "You've successfully signed in!");
+                    res.redirect("/dashboard");
+                })
+            }
+        })
+    },
+    signOut(req, res, next) {
+        req.logout();
+        req.flash("notice", "You've successfully signed out!");
+        res.redirect("/");
     }
 }

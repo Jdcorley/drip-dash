@@ -1,4 +1,3 @@
-const particle = require("particle-api-js");
 const request = require("request");
 const base = "https://api.particle.io/"
 
@@ -22,25 +21,23 @@ module.exports = {
             }
         })
     },
-    getAccessToken(callback){
-        if(req.user){
-            let options = {
-                url: `${base}oauth/token`,
-                form: {
-                    client_id: process.env.PARTICLE_CLIENT_ID,
-                    client_secret: process.env.PARTICLE_SECRET,
-                    grant_type: client_credentials,
-                    scope: `customer=${req.user.email}`
-                }
+    getAccessToken(email, callback){
+        let options = {
+            url: `${base}oauth/token`,
+            form: {
+                client_id: process.env.PARTICLE_CLIENT_ID,
+                client_secret: process.env.PARTICLE_SECRET,
+                grant_type: 'client_credentials',
+                scope: `customer=${email}`
             }
-            request.post(options, (err, res, body) => {
-                if(err) {
-                    callback(err);
-                } else {
-                    const response = JSON.parse(body);
-                    callback(null, response);
-                }
-            })
         }
+        request.post(options, (err, res, body) => {
+            if(err) {
+                callback(err);
+            } else {
+                const response = JSON.parse(body);
+                callback(null, response);
+            }
+        })
     }
 }

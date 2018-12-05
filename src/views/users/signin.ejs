@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include ../static/partials/head.ejs %>
+    </head>
+    <body>
+        <% include ../static/partials/navbar.ejs %>
+
+        <main class="container">
+            <% include ../static/partials/messages.ejs %>
+            <div class="row justify-content-center mt-3">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <h1 class="card-header text-center">Sign In</h1>
+                        <div class="card-body">
+                            <form action="/users/signin" method="POST" class="col-lg-10 offset-lg-1">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+                                    <small class="text-muted" id="emailHelp">enter your email address</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" name="password" aria-describedby="passwordHelp" placeholder="Enter password">
+                                    <small class="text-muted" id="passwordHelp">enter your password</small>
+                                </div>
+                                <div class="text-center"><button type="submit" class="btn btn-primary">Sign in</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <% include ../static/partials/baseScripts.ejs %>
+    </body>
+</html>
