@@ -7,9 +7,14 @@ const session = require("express-session");
 const flash = require("express-flash");
 const passportConfig = require("./passport-config");
 const redisConfig = require('./redis-config');
+const enforce = require("express-sslify");
+
 
 module.exports = {
     init(app, express){
+        if(process.env.NOSLL){
+            app.use(enforce.HTTPS({ trustProtoHeader: true }));
+        }
         app.set("views", viewsFolder);
         app.set("view engine", "ejs");
         app.use(bodyParser.urlencoded({extended: true}));

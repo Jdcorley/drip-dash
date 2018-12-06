@@ -1,6 +1,6 @@
 {
   "development": {
-    "username": "postgres",
+    "username": "kevincorley",
     "password": null,
     "database": "drip-dash-dev",
     "host": "127.0.0.1",
@@ -9,7 +9,7 @@
     "operatorsAliases": false
   },
   "test": {
-    "username": "postgres",
+    "username": "kevincorley",
     "password": null,
     "database": "drip-dash-test",
     "host": "127.0.0.1",
