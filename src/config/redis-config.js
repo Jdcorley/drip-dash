@@ -1,3 +1,5 @@
+var url = require("url");
+
 module.exports = {
     init(app, session){
         const redis = require("redis");
