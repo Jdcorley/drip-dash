@@ -2,9 +2,11 @@ module.exports = {
     init(app, session){
         const redis = require("redis");
         const redisStore = require("connect-redis")(session);
-        const client = redis.createClient();
 
         if (process.env.REDIS_URL) {
+            var redisURL = url.parse(process.env.REDIS_URL);
+            var client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
+            client.auth(redisURL.auth.split(":")[1]);
             app.use(session({
                 secret: process.env.cookieSecret,
                 store: new redisStore({
@@ -16,6 +18,7 @@ module.exports = {
                 cookie: { maxAge: 1.21e+9 }
             }));
         } else {
+            const client = redis.createClient();
             app.use(session({
                 secret: process.env.cookieSecret,
                 store: new redisStore({
