@@ -28,7 +28,8 @@ module.exports = {
                 client_id: process.env.PARTICLE_CLIENT_ID,
                 client_secret: process.env.PARTICLE_SECRET,
                 grant_type: 'client_credentials',
-                scope: `customer=${email}`
+                scope: `customer=${email}`,
+                expires_in: 25200
             }
         }
         request.post(options, (err, res, body) => {

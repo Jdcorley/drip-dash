@@ -17,7 +17,7 @@ module.exports = {
                 }),
                 resave: false,
                 saveUninitialized: false,
-                cookie: { maxAge: 1.21e+9 }
+                cookie: { maxAge: 2.52e+7 }
             }));
         } else {
             const client = redis.createClient();
@@ -30,7 +30,7 @@ module.exports = {
                 }),
                 resave: false,
                 saveUninitialized: false,
-                cookie: { maxAge: 1.21e+9 }
+                cookie: { maxAge: 2.52e+7 }
             }));
         }
     }

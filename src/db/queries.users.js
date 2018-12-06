@@ -1,4 +1,5 @@
 const User = require("./models").User;
+const Device = require("./models").Device;
 const bcrypt = require("bcryptjs");
 
 module.exports = {

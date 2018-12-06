@@ -14,5 +14,19 @@ module.exports = {
         } else {
             return next();
         }
+    },
+    validateDeviceClaim(req, res, next) {
+        if(req.method === "POST"){
+            req.checkBody("deviceId", "must be 24 chracters in length").isLength({min: 24, max: 24});
+        }
+
+        const errors = req.validationErrors();
+
+        if(errors) {
+            req.flash("error", errors);
+            return res.redirect(req.headers.referer);
+        } else {
+            return next();
+        }
     }
 }

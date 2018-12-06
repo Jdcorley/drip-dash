@@ -8,25 +8,18 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-2 d-none d-md-block bg-light sidebar">
-                    <div class="sidebar-sticky">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#">Overview</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Properties</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Devices</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Settings</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <% include ./partials/sidebar.ejs %>
                 </div>
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-
+                    <% include ./partials/messages.ejs %>
+                    <div class="card mt-3">
+                        <h2 class="card-header text-center">Welcome</h2>
+                        <div class="card-body">
+                            <h3 class="text-center">Welcome to Drip!</h3>
+                            <p class="text-center">Please add your first device to get started!</p>
+                            <div class="text-center"><a class="btn btn-primary" href="/devices">Let's Go!</a></div>
+                        </div>
+                    </div>
                 </main>
             </div>
         </div>

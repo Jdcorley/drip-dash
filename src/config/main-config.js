@@ -20,6 +20,7 @@ module.exports = {
         passportConfig.init(app);
         app.use((req,res,next) => {
             res.locals.currentUser = req.user;
+            res.locals.active = req.path.split('/')[1];
             next();
         })
     }
