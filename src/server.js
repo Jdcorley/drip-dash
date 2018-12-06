@@ -1,9 +1,11 @@
 const app = require("./app");
 const http = require("http");
+const enforce = require("express-sslify");
 
 const port = normalizePort(process.env.PORT || "3000");
 app.set("port", port);
 
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 const server = http.createServer(app);
 server.listen(port);
 
