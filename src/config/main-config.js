@@ -12,8 +12,9 @@ const enforce = require("express-sslify");
 
 module.exports = {
     init(app, express){
-        if(process.env.NOSLL){
+        if(process.env.ssl !== "true"){
             app.use(enforce.HTTPS({ trustProtoHeader: true }));
+            console.log("https");
         }
         app.set("views", viewsFolder);
         app.set("view engine", "ejs");
