@@ -9,5 +9,14 @@ module.exports = {
         .catch((err) => {
             callback(err);
         })
+    },
+    getDevices(userId, callback){
+        return Device.all({where: {userId: userId}})
+        .then((devices) => {
+            callback(null, devices);
+        })
+        .catch((err) => {
+            callback(err);
+        })
     }
 }

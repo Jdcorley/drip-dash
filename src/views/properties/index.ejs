@@ -13,13 +13,13 @@
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                     <% include ../static/partials/messages.ejs %>
                     <h1>
-                        <span>Registered Devices</span>
-                        <a href="/devices/new" class="btn btn-success float-right">Add Device</a>
+                        <span>Properties</span>
+                        <a href="/properties/new" class="btn btn-success float-right">Add Property</a>
                     </h1>
                     <ul class="list-group">
-                        <% devices.forEach((device) => { %>
+                        <% properties.forEach((property) => { %>
                             <li class="list-group-item">
-                                <a href="/devices/<%= device.deviceId %>"><%= device.deviceId %></a>
+                                <a href="/properties/<%= property.id %>"><%= property.streetAddress %></a>
                             </li>
                         <% }) %>
                     </ul>

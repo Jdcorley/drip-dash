@@ -12,17 +12,11 @@
                 </div>
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                     <% include ../static/partials/messages.ejs %>
-                    <h1>
-                        <span>Registered Devices</span>
-                        <a href="/devices/new" class="btn btn-success float-right">Add Device</a>
-                    </h1>
-                    <ul class="list-group">
-                        <% devices.forEach((device) => { %>
-                            <li class="list-group-item">
-                                <a href="/devices/<%= device.deviceId %>"><%= device.deviceId %></a>
-                            </li>
-                        <% }) %>
-                    </ul>
+                    <h1>Device Details</h1>
+                    <h2><%= device.name %></h2>
+                    <p>Device ID: <%= device.id%></p>
+                    <p>Firmware: <%= device.system_firmware_version %></p>
+                    <p>Connected: <%= device.connected %></p>
                 </main>
             </div>
         </div>

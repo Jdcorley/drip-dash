@@ -44,6 +44,16 @@ describe("routes : devices", () => {
             it("should return status code 200 if logged in", (done) => {
                 request.get(base, (err, res, body) => {
                     expect(res.statusCode).toBe(200);
+                    expect(body).toContain("Registered Devices");
+                    done();
+                })
+            })
+        })
+
+        describe("GET /devices/new", () => {
+            it("should return status code 200 if logged in", (done) => {
+                request.get(`${base}/new`, (err, res, body) => {
+                    expect(res.statusCode).toBe(200);
                     expect(body).toContain("Device Registration");
                     done();
                 })
