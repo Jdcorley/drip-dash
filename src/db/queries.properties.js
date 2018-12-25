@@ -27,5 +27,17 @@ module.exports = {
         .catch((err) => {
             callback(err);
         })
+    },
+    deleteProperty(req, callback){
+        return Property.findById(req.params.id)
+        .then((property) => {
+            property.destroy()
+            .then((res) => {
+                callback(null, property);
+            });
+        })
+        .catch((err) => {
+            callback(err);
+        })
     }
 }

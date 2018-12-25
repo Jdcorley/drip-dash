@@ -9,5 +9,6 @@ router.get("/properties", helper.ensureAuthenticated, propertyController.index);
 router.get("/properties/new", helper.ensureAuthenticated, propertyController.new);
 router.post("/properties/create", helper.ensureAuthenticated, propertyController.create);
 router.get("/properties/:id", helper.ensureAuthenticated, propertyController.show);
+router.get("/properties/:id/destroy", helper.ensureAuthenticated, propertyController.destroy);
 
 module.exports = router;

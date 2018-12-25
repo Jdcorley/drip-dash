@@ -40,6 +40,15 @@
                                         <input type="zip" class="form-control" name="zip" aria-describedby="zipHelp" placeholder="Enter zip code">
                                         <small class="text-muted" id="zipHelp">enter zip code</small>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="device">Device Id</label>
+                                        <select name="device">
+                                            <option value=""></option>
+                                            <% devices.forEach((device) => { %>
+                                                <option value="<%= device.id %>"><%= device.deviceId %></option>
+                                            <% }) %>
+                                        </select>
+                                    </div>
                                     <div class="text-center"><button type="submit" class="btn btn-primary">Submit</button></div>
                                 </form>
                             </div>

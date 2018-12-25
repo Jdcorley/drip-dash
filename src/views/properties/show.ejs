@@ -12,13 +12,18 @@
                 </div>
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                     <% include ../static/partials/messages.ejs %>
-                    <h1>Property Details</h1>
+                    <h1>
+                        <span>Property Details</span>
+                        <a href="/properties/<%= property.id %>/destroy" class="btn btn-danger float-right">Delete</a>
+                        <a href="/properties/<%= property.id %>/edit" class="btn btn-warning float-right">Edit</a>
+                    </h1>
                     <h2><%= property.streetAddress %></h2>
                     <% if(property.streetAddress2) { %>
                         <p><%= property.streetAddress2 %></p>
                     <% } %>
                     <p><%= property.city %>,&nbsp;<%= property.state %></p>
                     <p><%= property.zipCode %></p>
+                    <p><%= property.deviceId %></p>
                 </main>
             </div>
         </div>
